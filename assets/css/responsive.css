@@ -1,0 +1,346 @@
+/* ============================================================
+   RESPONSIVE.CSS — Responsividade Total para o Quiz RPG
+   ============================================================ */
+
+/* ---------------------
+   AJUSTES GERAIS
+   --------------------- */
+
+@media (max-width: 1280px) {
+  .app {
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 1024px) {
+  body {
+    padding: 14px;
+  }
+}
+
+/* ---------------------
+   900px — Ajustes de Layout mais amplos
+   --------------------- */
+
+@media (max-width: 900px) {
+  /* cards e painéis */
+  .card {
+    padding: 16px;
+  }
+
+  /* texto geral */
+  h1,
+  h2,
+  h3 {
+    line-height: 1.3;
+  }
+
+  #textoQuestao {
+    font-size: 11px;
+  }
+
+  /* progress bar reduz leve */
+  #progresso {
+    height: 16px;
+  }
+
+  .alternativas .alternativa {
+    font-size: 10px;
+  }
+}
+
+/* ============================================================
+   768px — Tamanho Tablet
+   ============================================================ */
+
+@media (max-width: 768px) {
+  /* TELA INICIAL */
+  .inicioTela header {
+    padding: 18px;
+    max-width: 480px;
+  }
+
+  .tituloInicial {
+    font-size: 18px;
+  }
+
+  #descInicial {
+    font-size: 10px;
+  }
+
+  .ActionsInicio .btn {
+    padding: 12px 18px;
+    font-size: 12px;
+  }
+
+  /* Nickname */
+  #telaNickname header {
+    max-width: 420px;
+    padding: 18px;
+  }
+
+  #formularioNick {
+    padding: 20px;
+    max-width: 420px;
+  }
+
+  #formularioNick input,
+  #formularioNick select {
+    padding: 10px;
+    font-size: 10px;
+  }
+
+  /* Quiz card layout */
+
+  #personagem {
+    max-width: 130px;
+    max-height: 130px;
+    margin-top: 10px;
+  }
+
+  #textoQuestao {
+    width: 100%;
+    text-align: left;
+    font-size: 11px;
+  }
+
+  /* alternativas 
+  .alternativas {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  } */
+
+  .alternativas .alternativa {
+    font-size: 11px;
+    padding: 12px;
+  }
+
+  /* contador */
+  .counter {
+    font-size: 11px;
+    min-width: 70px;
+  }
+
+  /* botões */
+  .btn {
+    padding: 10px 14px;
+    font-size: 10px;
+  }
+}
+
+/* ============================================================
+   600px — Smartphones Grandes
+   ============================================================ */
+
+@media (max-width: 600px) {
+  /* Centraliza tudo melhor */
+  .tela {
+    padding: 20px 10px;
+  }
+
+  .inicioTela header {
+    padding: 16px;
+    max-width: 380px;
+  }
+
+  .tituloInicial {
+    font-size: 16px;
+  }
+
+  #descInicial {
+    font-size: 9px;
+  }
+
+  /* nickname box */
+  #formularioNick {
+    padding: 18px;
+    max-width: 360px;
+  }
+
+  #formularioNick label {
+    font-size: 10px;
+  }
+
+  #formularioNick input,
+  #formularioNick select {
+    font-size: 9px;
+    padding: 8px;
+  }
+
+  .formActions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .formActions .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Quiz layout */
+  #textoQuestao {
+    font-size: 10px;
+    padding: 10px;
+  }
+
+  #personagem {
+    max-width: 120px;
+    max-height: 120px;
+  }
+
+  .alternativas .alternativa {
+    font-size: 10px;
+    padding: 10px;
+  }
+
+  /* meta quiz topo */
+  .metaQuiz {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  #progresso {
+    width: 100%;
+    height: 14px;
+  }
+
+  .counter {
+    min-width: auto;
+    width: 100%;
+    padding: 6px;
+  }
+
+  /* botões */
+  .controleQuiz {
+    flex-direction: column;
+  }
+
+  .controleQuiz .btn {
+    width: 100%;
+  }
+}
+
+/* ============================================================
+   480px — Smartphones Médios
+   ============================================================ */
+
+@media (max-width: 480px) {
+  body {
+    padding: 8px;
+  }
+
+  .inicioTela header {
+    padding: 14px;
+    transform: scale(0.95);
+  }
+
+  .tituloInicial {
+    font-size: 14px;
+  }
+
+  #descInicial {
+    font-size: 8px;
+  }
+
+  #formularioNick {
+    padding: 16px;
+  }
+
+  /* inputs menores */
+  #formularioNick input,
+  #formularioNick select {
+    padding: 8px;
+  }
+
+  #textoQuestao {
+    font-size: 9px;
+  }
+
+  #cardQuestion {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  #cardQuestion .testequest {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #personagem {
+    max-width: 110px;
+  }
+
+  .alternativas {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .alternativas .alternativa {
+    padding: 10px;
+    font-size: 9px;
+  }
+
+  .btn {
+    padding: 8px 12px;
+    font-size: 9px;
+  }
+
+  #tituloResultado {
+    font-size: 14px;
+  }
+
+  #resumoScore {
+    font-size: 12px;
+    margin: 20px;
+  }
+
+  .resultadoActions {
+    flex-direction: column;
+    margin: 80px;
+  }
+
+  .resultadoActions .btn {
+    width: 100%;
+  }
+}
+
+/* ============================================================
+   380px — Smartphones Pequenos (Moto E, Galaxy Pocket, etc.)
+   ============================================================ */
+
+@media (max-width: 380px) {
+  * {
+    -webkit-text-size-adjust: none;
+  }
+
+  .inicioTela header {
+    transform: scale(0.88);
+  }
+
+  .tituloInicial {
+    font-size: 13px;
+  }
+
+  #formularioNick {
+    transform: scale(0.98);
+  }
+
+  #textoQuestao {
+    font-size: 8.5px;
+  }
+
+  .alternativas .alternativa {
+    font-size: 8px;
+    padding: 8px;
+  }
+
+  #personagem {
+    max-width: 95px;
+    max-height: 95px;
+  }
+
+  .btn {
+    font-size: 8.5px !important;
+    padding: 7px 10px;
+  }
+}

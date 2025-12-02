@@ -1,212 +1,590 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 /* =========================
    VARIÁVEIS E RESET (root)
    ========================= */
-:root{
-  --bg-0: #061221;         /* fundo */
-  --panel: #071827;        /* cards/painéis */
-  --muted: #9aa8b6;        /* texto secundário */
-  --accent: #7dd3fc;       /* cor principal (azul claro) */
-  --accent-2: #06b6d4;     /* gradiente */
+:root {
+  --bg-0: #061221; /* fundo */
+  --panel: #071827; /* cards/painéis */
+  --muted: #9aa8b6; /* texto secundário */
+  --accent: #7dd3fc; /* cor principal (azul claro) */
+  --accent-2: #06b6d4; /* gradiente */
   --white: #e6f0f6;
   --radius: 12px;
   --gap: 14px;
   --container-w: 980px;
-  --shadow: 0 10px 30px rgba(2,6,23,0.6);
-  --glass: rgba(255,255,255,0.03);
+  --shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
+  --glass: rgba(255, 255, 255, 0.03);
   --success: #16a34a;
   --danger: #ef4444;
-  --font-sans: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --font-sans: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+  --font-pixel: "Press Start 2P", monospace;
 }
 
 /* reset simples */
-* { box-sizing: border-box; }
-html,body { height: 100%; }
-body{
+* {
+  box-sizing: border-box;
+  font-family: "Press Start 2P", system-ui;
+}
+
+body {
   margin: 0;
   font-family: var(--font-sans);
-  background: linear-gradient(180deg, var(--bg-0), #02121a);
+  background: #061221;
   color: var(--white);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
   line-height: 1.35;
   padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 /* container central */
-.app{
+.app {
   width: 100%;
   max-width: var(--container-w);
   margin: 0 auto;
-  padding: 18px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* =========================
    SISTEMA DE "TELAS" (show/hide)
    ========================= */
 /* todas as telas .tela começam ocultas por padrão */
-.tela { display: none; opacity: 0; transform: translateY(6px); transition: opacity .25s ease, transform .25s ease; }
+.tela {
+  display: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
 
 /* classe que mostra a tela (no seu HTML você usou "ativa") */
-.tela.ativa { display: block; opacity: 1; transform: translateY(0); }
+.tela.ativa {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* espaçamento padrão entre seções */
-.tela header { margin-bottom: 10px; }
-.tela h1, .tela h2, .tela h3 { margin: 6px 0; font-weight: 600; }
-.tela p { margin: 0 0 8px 0; color: var(--muted); }
+.tela header {
+  margin-bottom: 10px;
+}
+.tela h1,
+.tela h2,
+.tela h3 {
+  margin: 6px 0;
+  font-weight: 600;
+}
+.tela p {
+  margin: 0 0 8px 0;
+  color: var(--muted);
+}
+
+/* =========================
+   CAPÍTULO 1 — TELA INICIAL RPG
+   ========================= */
+
+/* o container da tela inicial */
+.inicioTela {
+  justify-items: center;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+/* caixa central estilo RPG */
+.inicioTela header {
+  background: #e9d8a6; /* pergaminho */
+  border: 4px solid #6b4f2a; /* borda escura pixel style */
+  padding: 22px;
+  box-shadow: 0 0 0 4px #3a2e17, 0 0 0 8px #000; /* bordas duplas pixeladas */
+  color: #2b2b2b;
+  max-width: 540px;
+  image-rendering: pixelated;
+}
+
+/* título */
+.tituloInicial {
+  font-family: var(--font-pixel);
+  font-size: 20px;
+  margin-bottom: 14px;
+  color: #2b2b2b;
+}
+
+.tituloInicial .orbs {
+  font-size: 30px;
+  color: #fff;
+  padding: 1%;
+  transform: rotate(145deg);
+  border-radius: 999px;
+  background: linear-gradient(
+    45deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  transform: rotate(145deg);
+  cursor: default;
+}
+
+.tituloInicial .orbs:last-child {
+  transform: rotate(45deg);
+}
+
+/* parágrafo */
+#descInicial {
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  line-height: 1.4;
+  color: #3a2e17;
+}
+
+/* botão inicial */
+.ActionsInicio {
+  padding-top: 5%;
+}
+
+.ActionsInicio .btn {
+  font-family: var(--font-pixel);
+  background: #ffe5a1;
+  color: #2b2b2b;
+  border: 4px solid #6b4f2a;
+  box-shadow: 0 0 0 4px #3a2e17, 0 0 0 8px #000;
+  padding: 14px 22px;
+  font-size: 13px;
+  transition: transform 0.12s ease;
+}
+
+.ActionsInicio .btn:hover {
+  transform: translateY(-3px);
+  background: #ffe8b5;
+}
+
+.ActionsInicio .btn:active {
+  transform: translateY(0);
+}
+
+/* =========================
+   TELA DE NICKNAME RPG
+   ========================= */
+
+#telaNickname {
+  justify-items: center;
+  text-align: center;
+  padding: 40px 20px;
+  position: relative;
+}
+
+/* caixa estilo pergaminho */
+#telaNickname header {
+  background: #e9d8a6;
+  border: 4px solid #6b4f2a;
+  padding: 20px;
+  box-shadow: 0 0 0 4px #3a2e17, 0 0 0 8px #000;
+  color: #2b2b2b;
+  max-width: 540px;
+  margin-bottom: 22px;
+  image-rendering: pixelated;
+}
+
+/* Caixa RPG do formulário */
+#formularioNick {
+  background: #fff3c4;
+  border: 4px solid #6b4f2a;
+  padding: 26px;
+  margin-top: 20px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 0 0 4px #3a2e17, 0 0 0 8px #000;
+  image-rendering: pixelated;
+  color: #2b2b2b;
+  text-align: left;
+}
+
+#formularioNick label {
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  color: #3a2e17;
+  margin-bottom: 6px;
+}
+
+#formularioNick input,
+#formularioNick select {
+  background: #ffe8b5;
+  border: 3px solid #6b4f2a;
+  box-shadow: 0 0 0 3px #3a2e17;
+  padding: 12px;
+  color: #2b2b2b;
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  border-radius: 0;
+  image-rendering: pixelated;
+  margin-bottom: 18px;
+}
+
+#formularioNick select option {
+  color: #2b2b2b;
+}
+
+#formularioNick .formActions .btn {
+  background: #ffe5a1;
+  border: 3px solid #6b4f2a;
+  color: #2b2b2b;
+  box-shadow: 0 0 0 3px #3a2e17;
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  image-rendering: pixelated;
+}
+
+#formularioNick .formActions .btn:hover {
+  background: #ffe8b5;
+  transform: translateY(-2px);
+}
 
 /* =========================
    LAYOUT: cartas / painéis
    ========================= */
-.card{
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
-  border-radius: var(--radius);
-  padding: 16px;
-  box-shadow: var(--shadow);
-  border: 1px solid rgba(255,255,255,0.03);
+.card {
+  image-rendering: pixelated;
+  background: #e9d8a6; /* cor de pergaminho/caixa RPG */
+  color: #2b2b2b;
+  border: 4px solid #6b4f2a; /* borda mais escura estilo pixel */
+  padding: 20px;
+  box-shadow: 0 0 0 4px #3a2e17, 0 0 0 8px #000; /* bordas duplas pixeladas */
+  border-radius: 0; /* pixel style */
+  position: relative;
 }
 
 /* figure (personagem) placeholder */
-#personagem{
+#personagem {
   width: 100%;
-  height: 140px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  overflow: hidden;
-  background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  margin-bottom: 12px;
+  height: 100%;
+  max-width: 140px;
+  max-height: 140px;
+  background: #000;
+  border: 4px solid #6b4f2a;
+  box-shadow: 0 0 0 4px #3a2e17;
+}
+
+#personagem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* h3 pergunta */
 #textoQuestao {
-  font-size: 1.05rem;
-  margin: 8px 0 12px;
+  font-family: var(--font-pixel);
+  font-size: 12px;
+  color: #2b2b2b;
+  background: #fff3c4;
+  border: 3px solid #6b4f2a;
+  padding: 12px;
+  display: inline-block;
+  margin: 0 0 14px 0;
+  box-shadow: 0 0 0 3px #3a2e17;
+}
+
+#cardQuestion {
+  display: grid;
+  grid-template-columns: 150px 1ft;
+  gap: 12px;
+}
+
+#cardQuestion .testequest {
+  display: flex;
+  justify-content: space-around;
+  flex-flow: row-reverse;
 }
 
 /* =========================
    BOTÕES (consistentes)
    ========================= */
-.btn{
+.btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 9px 12px;
+  padding: 12px 16px;
   border-radius: 10px;
-  border: none;
+  border: 3px solid #1e3a8a;
+  background: #93c5fd;
+  font-size: 11px;
+  color: #0f172a;
   cursor: pointer;
   background: transparent;
   color: var(--white);
   font-weight: 600;
-  transition: transform .08s ease, box-shadow .12s ease, opacity .12s ease;
+  transition: transform 0.08s ease, box-shadow 0.12s ease, opacity 0.12s ease;
 }
 
 /* primary button */
-.btn.primary{
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  color: #022; /* escuro sobre o azul claro */
-  box-shadow: 0 6px 18px rgba(6,182,212,0.12);
+.btn.primary {
+  background: #7dd3fc;
+  border-color: #0284c7;
+  box-shadow: 0 0 0 3px #164e63;
+  color: #000;
+}
+
+.btn.secondary {
+  color: #000;
 }
 
 /* hover/focus states */
-.btn:hover { transform: translateY(-2px); }
-.btn:active { transform: translateY(0); }
-.btn:focus { outline: 3px solid rgba(125,211,252,0.18); outline-offset: 3px; }
+.btn:hover {
+  transform: translateY(-2px);
+}
+.btn:active {
+  transform: translateY(0);
+}
+.btn:focus {
+  outline: 3px solid rgba(125, 211, 252, 0.18);
+  outline-offset: 3px;
+}
 
 /* pequenas variações */
-.ActionsInicio { margin-top: 14px; }
-.formActions, .resultadoActions, .controleQuiz { display:flex; gap:10px; justify-content: flex-end; margin-top: 14px; }
+.ActionsInicio {
+  margin-top: 14px;
+}
+.formActions,
+.resultadoActions,
+.controleQuiz {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 14px;
+}
 
 /* =========================
    FORMULÁRIOS / INPUTS
    ========================= */
-label { display:block; margin: 8px 0 6px; font-size: 0.92rem; color: var(--muted); }
-input[type="text"], select {
+label {
+  display: block;
+  margin: 8px 0 6px;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+input[type="text"],
+select {
   width: 100%;
   padding: 10px 12px;
   border-radius: 8px;
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.04);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
   color: var(--white);
   font-size: 0.98rem;
-  transition: box-shadow .12s ease, border-color .12s ease;
+  transition: box-shadow 0.12s ease, border-color 0.12s ease;
 }
-input[type="text"]::placeholder { color: rgba(255,255,255,0.35); }
+input[type="text"]::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
 
-input[type="text"]:focus, select:focus {
+input[type="text"]:focus,
+select:focus {
   outline: none;
-  box-shadow: 0 6px 18px rgba(7,120,153,0.12);
-  border-color: rgba(125,211,252,0.35);
+  box-shadow: 0 6px 18px rgba(7, 120, 153, 0.12);
+  border-color: rgba(125, 211, 252, 0.35);
 }
 
 /* botão de submit no form (se precisar de estilo especial) */
-.form .btn.primary { width: 160px; }
+.form .btn.primary {
+  width: 160px;
+}
 
 /* =========================
    PROGRESS BAR E META (topo do quiz)
    ========================= */
-.metaQuiz { display:flex; gap:12px; align-items:center; justify-content: space-between; margin-bottom: 12px; }
+.metaQuiz {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
 #progresso {
   flex: 1 1 auto;
-  height: 10px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.03);
-  overflow: hidden;
+  height: 18px; /* altura de barra estilo RPG */
+  background: #fff3c4; /* combina com o pergaminho */
+  border: 4px solid #6b4f2a; /* borda escura */
+  box-shadow: 0 0 0 4px #3a2e17, /* segunda borda pixelada */ 0 0 0 8px #000; /* terceira borda preta estilo HUD */
   position: relative;
+  overflow: hidden;
+  image-rendering: pixelated;
 }
+
 #progresso .fill {
   position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 0%;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  border-radius: inherit;
-  transition: width .25s ease;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 80%;
+  background: linear-gradient(90deg, #7dd3fc, #0284c7);
+  image-rendering: pixelated;
+
+  /* Efeito de brilho */
+  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.45);
+
+  /* bordas internas */
+  border-right: 3px solid rgba(0, 0, 0, 0.35);
+
+  transition: width 0.35s steps(6);
 }
 
 /* contador de questões */
-.counter { min-width: 70px; text-align: right; color: var(--muted); font-weight:600; }
+.counter {
+  min-width: 90px;
+  padding: 6px 10px;
+  background: #e9d8a6;
+  border: 4px solid #6b4f2a;
+  box-shadow: 0 0 0 4px #3a2e17, 0 0 0 8px #000;
+  color: #2b2b2b;
+  font-family: var(--font-pixel);
+  font-size: 12px;
+  text-align: center;
+  image-rendering: pixelated;
+}
 
 /* =========================
    ALTERNATIVAS (choices)
    ========================= */
-.alternativas { display:flex; flex-direction: column; gap: 10px; margin-top: 8px; }
-.alternativas .choice {
-  display:flex;
-  gap: 12px;
+.alternativas {
+  display: grid;
+  grid-template-columns: auto auto;
   align-items: center;
-  padding: 10px 12px;
+  gap: 12px;
+  font-family: var(--font-pixel);
+  cursor: pointer;
+  font-size: 10pt;
+  transition: background 0.1s;
+}
+.alternativas .alternativa {
   background: var(--glass);
   border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.02);
-  cursor: pointer;
-  transition: transform .08s ease, background .12s ease;
+  border: 1px solid rgba(255, 255, 255, 0.02);
+  transition: transform 0.08s ease, background 0.12s ease;
+  padding: 14px;
+  color: #2b2b2b;
+  background: #fff3c4;
+  border: 3px solid #6b4f2a;
+  box-shadow: 0 0 0 3px #3a2e17;
+}
+
+.alternativas:hover {
+  background: #ffe8a1;
+}
+
+.alternativas .alternativa.selected {
+  background: #ffe39a;
+  border-color: #c07639;
+  box-shadow: 0 0 0 3px #8a4c1d;
 }
 
 /* quando o input radio estiver checked (usaremos CSS baseado em atributo) */
-.alternativas input[type="radio"] { display: none; } /* esconder default */
-.alternativas .choice .labelText { flex: 1; }
+.alternativas input[type="radio"] {
+  display: none;
+} /* esconder default */
+.alternativas .alternativa .labelText {
+  flex: 1;
+}
 
 /* estilos visuais quando selecionado: (adicionaremos classe .selected via JS ou usar :has in novos navegadores) */
-.alternativas .choice.selected {
-  background: linear-gradient(90deg, rgba(125,211,252,0.08), rgba(6,182,212,0.04));
-  border-color: rgba(125,211,252,0.18);
+.alternativas .alternativa.selected {
+  background: linear-gradient(
+    90deg,
+    rgba(125, 211, 252, 0.08),
+    rgba(6, 182, 212, 0.04)
+  );
+  border-color: rgba(125, 211, 252, 0.18);
   transform: translateY(-2px);
 }
 
 /* foco por teclado */
-.alternativas .choice:focus { outline: 3px solid rgba(125,211,252,0.12); outline-offset: 4px; }
+.alternativas .alternativa:focus {
+  outline: 3px solid rgba(125, 211, 252, 0.12);
+  outline-offset: 4px;
+}
 
+.alternativas .alternativa:hover {
+  background: #ecc44a83;
+}
 /* =========================
    LEADERBOARD
    ========================= */
-#leaderboard { margin-top: 14px; }
-#listaLeaderboard { padding-left: 18px; color: var(--muted); }
 
-/* cada item do leaderboard */
-#listaLeaderboard li { margin-bottom: 8px; }
+/* CSS completo da tela de resultado estilo RPG */
+
+#resultadoTela {
+  justify-items: center;
+  text-align: center;
+  padding: 40px 20px;
+  gap: 20px;
+}
+
+#resultadoTela h2 {
+  font-family: var(--font-pixel);
+  font-size: 20px;
+  color: #e9d8a6;
+  text-shadow: 0 0 4px #000;
+}
+
+#resumoScore {
+  background: #e9d8a6;
+  border: 4px solid #6b4f2a;
+  box-shadow: 0 0 0 4px #3a2e17, 0 0 0 8px #000;
+  color: #2b2b2b;
+  padding: 18px;
+  font-family: var(--font-pixel);
+  font-size: 12px;
+  max-width: 420px;
+}
+
+#leaderboard {
+  background: #fff3c4;
+  border: 4px solid #6b4f2a;
+  padding: 22px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 0 0 4px #3a2e17, 0 0 0 8px #000;
+  image-rendering: pixelated;
+  color: #2b2b2b;
+}
+
+#leaderboard h3 {
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  margin-bottom: 16px;
+  color: #2b2b2b;
+}
+
+#listaLeaderboard li {
+  background: #ffe8b5;
+  border: 3px solid #6b4f2a;
+  box-shadow: 0 0 0 3px #3a2e17;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  color: #2b2b2b;
+}
+
+.resultadoActions {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.resultadoActions .btn {
+  background: #ffe5a1;
+  border: 3px solid #6b4f2a;
+  box-shadow: 0 0 0 3px #3a2e17;
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  color: #2b2b2b;
+  padding: 12px 20px;
+  cursor: pointer;
+}
+
+.resultadoActions .btn:hover {
+  background: #ffe8b5;
+  transform: translateY(-2px);
+}
+
 
 /* =========================
    TOAST / MENSAGENS
@@ -218,25 +596,11 @@ input[type="text"]:focus, select:focus {
   bottom: 22px;
   padding: 10px 14px;
   border-radius: 10px;
-  background: rgba(2,6,23,0.9);
+  background: rgba(2, 6, 23, 0.9);
   color: var(--white);
   box-shadow: var(--shadow);
   display: none;
 }
-.toast.show { display: block; }
-
-/* =========================
-   RESPONSIVO (melhorias em telas maiores)
-   ========================= */
-@media(min-width:720px){
-  body { padding: 36px; }
-
-  .card { padding: 20px; }
-  #personagem { height: 180px; }
-  .formActions, .resultadoActions { justify-content: flex-end; gap: 12px; }
-}
-
-@media(min-width:1000px){
-  .metaQuiz { gap: 18px; align-items: center; }
-  .app { padding: 28px; }
+.toast.show {
+  display: block;
 }
