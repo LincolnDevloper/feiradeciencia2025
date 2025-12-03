@@ -30,7 +30,7 @@ const btnRestart = document.getElementById("btnRestart");
 let usuario = {
   nome: "",
   serie: "",
-  turma: ""
+  turma: "",
 };
 
 let indiceQuestao = 0;
@@ -41,30 +41,46 @@ let score = 0;
 /* --------- Questões do Quiz --------- */
 questoes = [
   {
-    pergunta: "O que é DNA?",
-    alternativas: ["Um ácido nucleico", "Um carboidrato", "Uma proteína", "Um lipídeo"],
-    correta: 0
+    pergunta: "O que a Fotografia 51 revelou?",
+    alternativas: [
+      "Estrutura do DNA",
+      "Estrutura de protéinas",
+      "Formação de cristais de sal",
+      "Estrutura do RNA",
+    ],
+    correta: 0,
   },
   {
-    pergunta: "Qual a função dos ribossomos?",
+    pergunta: "Que problema marcou a carreira de Franklin?",
     alternativas: [
-      "Produzir proteínas",
-      "Gerar energia",
-      "Criar DNA",
-      "Transportar nutrientes"
+      "Falta de recursos financeiros",
+      "Conflitos com universidades",
+      "Machismo científico",
+      "Baixo reconhecimento acadêmico na época",
     ],
-    correta: 0
+    correta: 2,
   },
   {
-    pergunta: "As bases nitrogenadas A-T e C-G pertencem a:",
+    pergunta: "O que Franklin estudou no Birkbeck?",
     alternativas: [
-      "RNA",
-      "Membrana plasmática",
-      "DNA",
-      "Lisossomos"
+      "Cristalização de sais",
+      "Estrutura de vírus",
+      "Estrutura de plantas",
+      "Formação de minerais",
     ],
-    correta: 2
-  }
+    correta: 1,
+  },
+  {
+    pergunta: "Quem continuou os estudos dela?",
+    alternativas: [
+      "James Watson",
+      "Maurice Wilkins",
+      "Francis Crick",
+      "Aaron Klug",
+    ],
+    correta: 3,
+  },
+  
 ];
 
 // atualizar total
@@ -74,7 +90,9 @@ questoesTotalSpan.textContent = questoes.length;
    FUNÇÕES DE TROCA DE TELAS
    ============================================ */
 function trocarTela(tela) {
-  document.querySelectorAll(".tela").forEach((t) => t.classList.remove("ativa"));
+  document
+    .querySelectorAll(".tela")
+    .forEach((t) => t.classList.remove("ativa"));
   tela.classList.add("ativa");
 }
 
@@ -160,9 +178,7 @@ function selecionarResposta(indice) {
     .querySelectorAll(".alternativa")
     .forEach((a) => a.classList.remove("selected"));
 
-  document
-    .querySelectorAll(".alternativa")[indice]
-    .classList.add("selected");
+  document.querySelectorAll(".alternativa")[indice].classList.add("selected");
 }
 
 /* ============================================
@@ -222,7 +238,7 @@ function atualizarLeaderboard() {
     nome: usuario.nome,
     serie: usuario.serie,
     turma: usuario.turma,
-    pontos: score
+    pontos: score,
   });
 
   leaderboard.sort((a, b) => b.pontos - a.pontos);
