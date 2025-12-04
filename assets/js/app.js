@@ -8,7 +8,7 @@ const telaNickname = document.getElementById("telaNickname");
 const telaQuiz = document.getElementById("telaQuiz");
 const resultadoTela = document.getElementById("resultadoTela");
 
-const irParaNickname = document.getElementById("irParaNickname");
+const irParaQuiz = document.getElementById("irParaQuiz");
 const voltaInicio = document.getElementById("voltaInicio");
 const formularioNick = document.getElementById("formularioNick");
 
@@ -25,7 +25,7 @@ const scoreFinal = document.getElementById("scoreFinal");
 const scoreMax = document.getElementById("scoreMax");
 const listaLeaderboard = document.getElementById("listaLeaderboard");
 const btnRestart = document.getElementById("btnRestart");
-
+const msg = document.getElementById("scoreMsg")
 /* --------- Variáveis do sistema --------- */
 let usuario = {
   nome: "",
@@ -97,34 +97,10 @@ function trocarTela(tela) {
 }
 
 /* ============================================
-   TELA 1 → TELA NICKNAME
+   TELA 1 → TELA QUIZ
    ============================================ */
-irParaNickname.addEventListener("click", () => {
-  trocarTela(telaNickname);
-});
-
-/* voltar */
-voltaInicio.addEventListener("click", () => {
-  trocarTela(inicioTela);
-});
-
-/* ============================================
-   FORM NICKNAME (validação + iniciar quiz)
-   ============================================ */
-formularioNick.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const nome = document.getElementById("displayNome").value.trim();
-  const serie = document.getElementById("serie").value;
-  const turma = document.getElementById("turma").value;
-
-  if (nome === "" || serie === "" || turma === "") {
-    alert("Preencha todas as informações.");
-    return;
-  }
-
-  usuario = { nome, serie, turma };
-
+irParaQuiz.addEventListener("click", () => {
+  trocarTela(telaQuiz);
   iniciarQuiz();
 });
 
@@ -223,34 +199,24 @@ function finalizarQuiz() {
   scoreFinal.textContent = score;
   scoreMax.textContent = questoes.length;
 
-  atualizarLeaderboard();
-
   trocarTela(resultadoTela);
-}
 
-/* ============================================
-   LEADERBOARD (LOCALSTORAGE)
-   ============================================ */
-function atualizarLeaderboard() {
-  let leaderboard = JSON.parse(localStorage.getItem("ranking")) || [];
-
-  leaderboard.push({
-    nome: usuario.nome,
-    serie: usuario.serie,
-    turma: usuario.turma,
-    pontos: score,
-  });
-
-  leaderboard.sort((a, b) => b.pontos - a.pontos);
-
-  localStorage.setItem("ranking", JSON.stringify(leaderboard));
-
-  listaLeaderboard.innerHTML = "";
-  leaderboard.slice(0, 10).forEach((item) => {
-    const li = document.createElement("li");
-    li.textContent = `${item.nome} (${item.serie}${item.turma}) — ${item.pontos} pts`;
-    listaLeaderboard.appendChild(li);
-  });
+  if (score == 0){
+    msg.innerText = "Rank: Iniciante, tente novamente!"
+  }
+  if (score == 1){
+    msg.innerText = "Rank: Novato"
+  }
+  if (score == 2){
+    msg.innerText = "Rank: Curioso"
+  }
+  if (score == 3){
+    msg.innerText = "Rank: Expert"
+  }
+  if (score == 4){
+    msg.innerText = "Rank: Gênio"
+  }
+  
 }
 
 /* ============================================

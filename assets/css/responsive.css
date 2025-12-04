@@ -126,6 +126,10 @@
     padding: 10px 14px;
     font-size: 10px;
   }
+
+  #resumoScore{
+    font-size: 10pt;
+  }
 }
 
 /* ============================================================
@@ -286,13 +290,17 @@
   }
 
   #tituloResultado {
-    font-size: 14px;
+    font-size: 14pt;
   }
 
   #resumoScore {
     font-size: 12px;
     margin: 20px;
   }
+
+  #resultadoTela h2 {
+  font-size: 13pt;
+}
 
   .resultadoActions {
     flex-direction: column;
@@ -302,6 +310,16 @@
   .resultadoActions .btn {
     width: 100%;
   }
+
+  .resultadoActions .btn.dnaio{
+  width: 80vw;
+  height: 10vh;
+  border-radius: 99999px;
+  font-size: 10pt;
+  margin-top: 3rem;
+  background-color: #023093;
+  color: #fff;
+}
 }
 
 /* ============================================================
